@@ -2,7 +2,7 @@ Resources:
   TableDB:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.TableDB}
+      TableName: ${self:provider.tableDB}
       AttributeDefinitions:
         - AttributeName: pk
           AttributeType: S
@@ -22,9 +22,9 @@ Resources:
           Projection:
             ProjectionType: "ALL"
           ProvisionedThroughput:
-            ReadCapacityUnits: ${self:custom.tableThroughput}
-            WriteCapacityUnits: ${self:custom.tableThroughput}
+            ReadCapacityUnits: ${self:provider.tableThroughput}
+            WriteCapacityUnits: ${self:provider.tableThroughput}
       # Set the capacity based on the stage
       ProvisionedThroughput:
-        ReadCapacityUnits: ${self:custom.tableThroughput}
-        WriteCapacityUnits: ${self:custom.tableThroughput}
+        ReadCapacityUnits: ${self:provider.tableThroughput}
+        WriteCapacityUnits: ${self:provider.tableThroughput}
