@@ -21,7 +21,8 @@ provider:
   runtime: nodejs12.x
   region: us-east-1
   stage: ${opt:stage, self:provider.stage}
-  TableDB: ${self:custom.stage}-tableDB
+  tableDB: ${self:custom.stage}-tableDB
+  queueName: ${self:custom.stage}-queue
   tableThroughputs:
     prod: 1
     default: 1
@@ -32,7 +33,8 @@ provider:
   # commit your env.yml.
   #
   environment:
-    tableDB: ${self:custom.tableDB}
+    tableDB: ${self:provider.tableDB}
+    queueName: ${self:provider.queueName}
     # account: ${env:ACCOUNT}
 
   iamRoleStatements:
